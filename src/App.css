@@ -1,38 +1,203 @@
-.App {
-  text-align: center;
+.app {
+  height: 100vh;
+  background-color: #020230;
+  color: #fff;
+  display: flex;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main {
+  flex: 3;
+  background: linear-gradient(to bottom, rgba(0,0,0,0), #020230), url('./assets/bg.jpg') center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.pyramid {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.main .top {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px 60px;
+}
+
+.main .bottom {
+  flex: 1;
+  width: 100%;
+  padding: 10px 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main .top .timer {
+  width: 70px;
+  height: 70px;
+  border: solid 5px #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.trivia {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 50px;
+  padding-top: 10px;
+}
+
+.trivia .question {
+  padding: 20px;
+  border: solid 2px #fff;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 20px;
+  background: linear-gradient(to bottom, #100241, #000);
+}
+
+.trivia .options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 20px;
+}
+
+.trivia .options .option {
+  border: solid 1px #fff;
+  background: linear-gradient(to bottom, #0e0124, #22074d);
+  color: #fff;
+  font-size: 16px;
+  width: 48%;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.trivia .options .option:disabled {
+  cursor: not-allowed;
+}
+
+.trivia .options .option:hover:not(:disabled),
+.trivia .options .option.active {
+  background: mediumblue;
+}
+
+.trivia .options .option.correct {
+  animation: correct 2000ms linear forwards;
+}
+
+.trivia .options .option.wrong {
+  animation: wrong 2000ms linear forwards;
+}
+
+@keyframes correct {
+  0%,22%,42%,62% {
+    background: mediumblue;
   }
-  to {
-    transform: rotate(360deg);
+  20%,40%,60%,80% {
+    background: linear-gradient(to bottom, #0e0124, #22074d);
   }
+  82%,100% {
+    background: green;
+  }
+}
+
+@keyframes wrong {
+  0%,22%,42%,62% {
+    background: mediumblue;
+  }
+  20%,40%,60%,80% {
+    background: linear-gradient(to bottom, #0e0124, #22074d);
+  }
+  82%,100% {
+    background: crimson;
+  }
+}
+
+ul.moneyList {
+  width: 100%;
+  padding: 20px;
+}
+
+li.moneyListItem {
+  list-style-type: none;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+
+li.moneyListItem.active {
+  background-color: teal;
+}
+
+.moneyListItemNum {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 100;
+  opacity: 0.5;
+}
+
+.moneyListItemAmount {
+  flex: 3;
+  font-size: 19px;
+  font-weight: 300;
+}
+
+.startContainer {
+  width: 300px;
+  height: 120px;
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.startTitle {
+  font-size: 18px;
+}
+
+.nameInput {
+  width: 100%;
+  height: 40px;
+  border: none;
+  background-color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 18px;
+}
+.nameInput:focus {
+  outline: none;
+}
+
+.startBtn {
+  border: none;
+  width: 100%;
+  height: 30px;
+  background-color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
 }
